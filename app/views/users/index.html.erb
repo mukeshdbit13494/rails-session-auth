@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+<%= link_to "logout",'/logout' ,:method=>:delete%>
+<table border="2px" cellspacing="5px">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.password_digest %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    
+  </tbody>
+</table>
+
+<br>
+
